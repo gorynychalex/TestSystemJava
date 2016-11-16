@@ -1,4 +1,4 @@
-package quiz;
+package ru.dvfu.mrcpk.java.quiz;
 
 import java.util.Scanner;
 

@@ -1,5 +1,6 @@
 package ru.dvfu.mrcpk.java.quiz;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -53,8 +54,9 @@ public class QuizApp {
         // Ввод данных пользователя
         System.out.println("Выберите правильный вариант ответа:");
 
-        // Переменная, в которую записывается значение ответа пользователя
-        int userAnswer = new Scanner(System.in).nextInt();
+        // Переменная, в которую записывается значение ответа пользователя.
+        // Принимает ответ через валидацию данных, реализованную через специальный метод.
+        int userAnswer = checkCorrectInput(new Scanner(System.in), i );
 
         //---------------------------------------------------------------------------------------
         // Проверка правильности ответа
@@ -62,5 +64,31 @@ public class QuizApp {
             System.out.println("Ответ правильный!");
         else
             System.out.println("Ответ неверный.");
+    }
+
+
+
+    // Метод для проверки корректности введенных данных.
+    // Принимает в качестве параметров интерфейс Scanner и количество вариантов ответа m.
+    static int checkCorrectInput(Scanner scanner, int m){
+
+        int answer = 0;
+
+        //Специальная переменная для применения в цикле проверки.
+        boolean isCorrectOption;
+
+        try {
+
+            answer = scanner.nextInt();
+
+            if(answer < 1 || answer > m) throw new IllegalArgumentException();
+
+        } catch (InputMismatchException e) {
+            System.out.println("Введена не цифра: ");
+        } catch (IllegalArgumentException e){
+            System.out.println("Введен не существующий вариант: ");
+        }
+
+        return answer;
     }
 }

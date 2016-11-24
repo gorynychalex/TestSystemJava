@@ -151,14 +151,6 @@ public class QuizApp {
                 printWriter.println(option.option);
                 i++;
             }
-
-            if(userResult) {
-                printWriter.println("Пользователь ответил верно.");
-                printWriter.println("Оценка 5");
-            }else {
-                printWriter.println("Ответ пользователя неверен.");
-                printWriter.println("Оценка 2");
-            }
         }
 
         printWriter.close();

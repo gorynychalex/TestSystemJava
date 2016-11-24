@@ -1,5 +1,6 @@
 package ru.dvfu.mrcpk.java.quiz;
 
+import java.io.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -7,6 +8,12 @@ import java.util.Scanner;
  * Учебное приложение для выполнения тестирования
  */
 public class QuizApp {
+
+    static Question question;
+    static int userAnswer;
+    static boolean userResult;
+
+
     public static void main(String[] args) {
 
         //---------------------------------------------------------------------------------------
@@ -14,7 +21,7 @@ public class QuizApp {
         // Внесение одного вопроса
 
         // Создать объект вопроса и внести в переменную класса 'question' сам вопрос
-        Question question = new Question("Как стать программистом?");
+        question = new Question("Как стать программистом?");
 
         // Инициализация массива для вариантов ответов (выполнено только для упрощения понимания)
         question.options = new Option[3];
@@ -56,14 +63,38 @@ public class QuizApp {
 
         // Переменная, в которую записывается значение ответа пользователя.
         // Принимает ответ через валидацию данных, реализованную через специальный метод.
-        int userAnswer = checkCorrectInput(new Scanner(System.in), i );
+        userAnswer = checkCorrectInput(new Scanner(System.in), i );
 
         //---------------------------------------------------------------------------------------
         // Проверка правильности ответа
-        if(question.options[userAnswer - 1].correct)
+        if(question.options[userAnswer - 1].correct) {
             System.out.println("Ответ правильный!");
-        else
+            userResult = true;
+        } else {
             System.out.println("Ответ неверный.");
+            userResult = false;
+        }
+
+        //---------------------------------------------------------------------------------------
+        // Сохранение результатов
+        FileOutputStream fileOutputStream = null;
+        try {
+            fileOutputStream = new FileOutputStream("c:/test/quiz-save.txt");
+
+            // Запуск метода по сохранению данных
+            save(fileOutputStream);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fileOutputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
@@ -90,5 +121,46 @@ public class QuizApp {
         }
 
         return answer;
+    }
+
+    // Метод сохранения данных в файл
+    public static void save (OutputStream outputStream) throws Exception{
+
+        //Инициализация интерфейса с потоком вывода в файл
+        PrintWriter printWriter = new PrintWriter(outputStream);
+
+        int i = 1;
+
+        // Запуск сохранения данных: вопрос, варианты ответов, правильный ответ, ответ пользователя
+        if(question != null) {
+            //Сохранение самого вопроса
+            printWriter.println("Вопрос №");
+            printWriter.println(question.question);
+
+            //Сохранение результатов ответов
+            printWriter.println("N)\t[уст]\t[польз]\t Описание ответа");
+            for(Option option: question.options){
+                printWriter.print(i + ")\t");
+                printWriter.print("[" + option.correct + "]\t");
+                //Внесение ответа пользователя
+                if(i == userAnswer )
+                    printWriter.print("[true]\t");
+                else
+                    printWriter.print("[    ]\t");
+
+                printWriter.println(option.option);
+                i++;
+            }
+
+            if(userResult) {
+                printWriter.println("Пользователь ответил верно.");
+                printWriter.println("Оценка 5");
+            }else {
+                printWriter.println("Ответ пользователя неверен.");
+                printWriter.println("Оценка 2");
+            }
+        }
+
+        printWriter.close();
     }
 }

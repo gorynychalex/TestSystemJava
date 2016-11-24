@@ -1,5 +1,7 @@
 package ru.dvfu.mrcpk.java.quiz;
 
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /**
@@ -15,4 +17,5 @@ public class Quiz {
 
     // Динамический массив вариантов ответов
     ArrayList<Question> questionsList;
+
 }

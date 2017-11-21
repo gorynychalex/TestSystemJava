@@ -17,5 +17,9 @@ public class Quiz {
 
     // Динамический массив вопросов
     //ArrayList<Question> questionsList;
+    
+    void run(){
+        
+    }
 
 }

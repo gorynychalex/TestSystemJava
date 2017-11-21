@@ -18,8 +18,28 @@ public class Quiz {
     // Динамический массив вопросов
     //ArrayList<Question> questionsList;
     
+    //Метод запуска теста
     void run(){
-        
+        //Вывод наименования теста
+        System.out.println("Тест: " + nameTest);
+
+        int i=1;
+        //Цикл перечисления вопросов
+        for(Question question: (Question[]) questions){
+            
+            //Проверка наличия объекта вопроса
+            if(question != null) {
+                
+                //Вывод номера вопроса с точкой
+                System.out.print("\n" + i++ + ". ");
+
+                //Отображение вопроса
+                question.show();
+
+                //Вывод результата
+                this.result();
+            }
+        }
     }
     
     void result(){

@@ -14,10 +14,16 @@ public class Question {
     Option[] options;
 
     // Динамический массив вариантов ответов
-    ArrayList<Option> optionsList;
+    //ArrayList<Option> optionsList;
 
     // Конструктор класса для создания вопроса
     public Question(String question) {
         this.question = question;
+    }
+    
+    void run(){
+    }
+    
+    void result(){
     }
 }

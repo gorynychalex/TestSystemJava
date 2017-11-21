@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Question {
 
     //Текст вопроса
-    String question;
+    String textQuestion;
 
     // Массив вариантов ответов
     Option[] options;
@@ -17,11 +17,19 @@ public class Question {
     //ArrayList<Option> optionsList;
 
     // Конструктор класса для создания вопроса
-    public Question(String question) {
-        this.question = question;
+    public Question(String textQuestion) {
+        this.textQuestion = textQuestion;
     }
     
-    void run(){
+    //Отображение вопроса
+    public void show() {
+        //Текст вопроса
+        System.out.println(textQuestion);
+        int i=1;
+        for(Option option: (Option[]) options){
+            System.out.println("\t" + i++ + ") " + option.textOptions);
+        }
+
     }
     
     void result(){

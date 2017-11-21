@@ -6,7 +6,7 @@ package ru.dvfu.mrcpk.java.quiz;
 public class Option {
 
     //Текст варианта ответа
-    String option;
+    String textOption;
 
     // Указатель правильности ответа
     boolean correct;
@@ -17,7 +17,7 @@ public class Option {
 
     // Конструктор класса для создания варианта ответа
     public Option(String option, boolean correct) {
-        this.option = option;
+        this.textOption = option;
         this.correct = correct;
     }
     

@@ -21,7 +21,7 @@ public class Quiz {
     //Метод запуска теста
     void run(){
         //Вывод наименования теста
-        System.out.println("Тест: " + nameTest);
+        System.out.println("Тест: " + quiz);
 
         int i=1;
         //Цикл перечисления вопросов

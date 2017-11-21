@@ -38,7 +38,7 @@ public class QuizApp {
         System.out.println("Запуск теста по дисциплине: \"Программист\"");
 
         // Вывод вопроса
-        System.out.println(question.question);
+        System.out.println(question.textQuestion);
 
         int num = 1;
         System.out.println("\nВопрос №" + num + ":");
@@ -50,7 +50,7 @@ public class QuizApp {
             System.out.print(i + ") ");
 
             // Вывод текста варианта из объекта 'option'
-            System.out.println(opt.option);
+            System.out.println(opt.textOption);
 
             // Увеличение значения счетчика
             i++;
@@ -135,7 +135,7 @@ public class QuizApp {
         if(question != null) {
             //Сохранение самого вопроса
             printWriter.println("Вопрос №");
-            printWriter.println(question.question);
+            printWriter.println(question.textQuestion);
 
             //Сохранение результатов ответов
             printWriter.println("N)\t[уст]\t[польз]\t Описание ответа");
@@ -148,7 +148,7 @@ public class QuizApp {
                 else
                     printWriter.print("[    ]\t");
 
-                printWriter.println(option.option);
+                printWriter.println(option.textOption);
                 i++;
             }
         }

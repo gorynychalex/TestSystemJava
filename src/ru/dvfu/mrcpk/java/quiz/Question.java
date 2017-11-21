@@ -27,7 +27,7 @@ public class Question {
         System.out.println(textQuestion);
         int i=1;
         for(Option option: (Option[]) options){
-            System.out.println("\t" + i++ + ") " + option.textOptions);
+            System.out.println("\t" + i++ + ") " + option.textOption);
         }
 
     }

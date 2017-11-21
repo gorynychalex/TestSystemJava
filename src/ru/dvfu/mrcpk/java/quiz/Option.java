@@ -1,7 +1,7 @@
 package ru.dvfu.mrcpk.java.quiz;
 
 /**
- * Класс ВариантОтвета
+ * Класс Варианты ответа
  */
 public class Option {
 
@@ -19,5 +19,12 @@ public class Option {
     public Option(String option, boolean correct) {
         this.option = option;
         this.correct = correct;
+    }
+    
+    void run(){
+    }
+    
+    void result(){
+        
     }
 }

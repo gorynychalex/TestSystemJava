@@ -21,5 +21,8 @@ public class Quiz {
     void run(){
         
     }
+    
+    void result(){
+    }
 
 }

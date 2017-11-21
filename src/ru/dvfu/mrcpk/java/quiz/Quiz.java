@@ -12,10 +12,10 @@ public class Quiz {
     // Название теста
     String quiz;
 
-    // Массив ответов
+    // Массив вопросов
     Question[] questions;
 
-    // Динамический массив вариантов ответов
-    ArrayList<Question> questionsList;
+    // Динамический массив вопросов
+    //ArrayList<Question> questionsList;
 
 }
